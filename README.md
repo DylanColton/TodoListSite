@@ -1,6 +1,6 @@
 # Todo List Site
 
-The purpose of this project is to work with REST in a MEEN setting.
+The purpose of this project is to work with REST in a PEEN setting.
 
 I will attempt to develop this project with a very basic login to select which todo list you can view.
 
@@ -22,3 +22,6 @@ I will attempt to develop this project with a very basic login to select which t
 
 I will be using PEEN (PostgreSQL, Express, Ejs and Node.js) as I have grown quite accustomed to using this architecture.
 It provides me a lot of utility in printing values out into the HTML document, and automating processes in a similar manner to php.
+
+I am choosing not to use MongoDB as it has quirks and nuances which are not intuitive;
+and unlike C++, these quirks are not semantic and usefull for improving control over heap and pointer management or even a corollary to REST.
