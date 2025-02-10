@@ -22,9 +22,11 @@ const getTodo = async (req, res) => {
 
 const createNewTodo = async (req, res) => {
 	try {
-		const { task } = req.body;
+		const { task, username } = req.body;
+		const userID = await pool.query("SELECT id FROM users WHERE username=$1", [username]);
+		console.log(userID);
 		if (!task) return res.status(400).json({ error: "Task is required" });
-		const todo = await Todo.createTodo(task);
+		const todo = await Todo.createTodo(task, username);
 		res.status(201).json(todo);
 	} catch (err) {
 		res.status(500).json({ error: err.message });
