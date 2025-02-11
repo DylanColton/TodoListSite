@@ -1,4 +1,5 @@
 const express	= require("express");
+const pool		= require("../db.js");
 
 const { authenticate } = require("../middleware/auth");
 
@@ -12,35 +13,11 @@ const {
 	deleteTodoById
 } = require("../controllers/todo");
 
-router.get("/todo", authenticate, async (req, res) => {
-	try {
-		const userId = req.userId;
-		const todos = await getAllTodos(req, res);
-		res.json(todos);
-	} catch (err) {
-		res.status(500).json({ error: err.message });
-	}
-});
+router.get("/todo", authenticate, getAllTodos);
 
-router.get("/todo/:id", authenticate, async (req, res) => {
-	try {
-		const userId = req.userId;
-		const todos = await getTodo;
-		res.json(todos);
-	} catch (err) {
-		res.status(500).json({ error: err.message });
-	}
-});
+router.get("/todo/:id", authenticate, getTodo);
 
-router.post("/todo", authenticate, async (req, res) => {
-	try {
-		const userId = req.userId;
-		const todos = await createNewTodo;
-		res.json(todos);
-	} catch (err) {
-		res.status(500).json({ error: err.message });
-	}
-});
+router.post("/todo", authenticate, createNewTodo);
 
 router.put("/todo/:id", authenticate, updateTodoStatus);
 
